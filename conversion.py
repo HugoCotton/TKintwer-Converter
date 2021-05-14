@@ -93,6 +93,7 @@ def weightcalculate():
     weightans2.place(relx = 0.5, rely = 0.7, anchor = CENTER)      
 
 
+
 def distcalculate():
     distask = float(distentry1.get())
     distfrom = disttkvar.get()
