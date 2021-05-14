@@ -4,6 +4,7 @@ from tkinter import *
 
 root = tkinter.Tk()
 root.title('Conversion')
+root.configure(bg = '#000000')
 weightans = 'Please enter an answer'
 
 def weightcalculate():
@@ -93,7 +94,147 @@ def weightcalculate():
 
 
 def distcalculate():
-    print('ham')
+    distask = float(distentry1.get())
+    distfrom = disttkvar.get()
+    distto = dist2tkvar.get()
+    if distfrom == 'Millimetres':
+        if distto == 'Millimetres':
+            distans = distask
+        if distto == 'Centimetres':
+            distans = distask/10
+        if distto == 'Metres':
+            distans = distask/1000
+        if distto == 'Kilometres':
+            distans = distask/1000000
+        if distto == 'Inches':
+            distans = distask/25.4
+        if distto == 'Foot':
+            distans = distask/305
+        if distto == 'Yard':
+            distans = distask/914
+        if distto == 'Mile':
+            distans = distask/1609000  
+    if distfrom == 'Centimetres':
+        if distto == 'Millimetres':
+            distans = distask*10
+        if distto == 'Centimetres':
+            distans = distask
+        if distto == 'Metres':
+            distans = distask/100
+        if distto == 'Kilometres':
+            distans = distask/100000
+        if distto == 'Inches':
+            distans = distask/2.54
+        if distto == 'Foot':
+            distans = distask/30.48
+        if distto == 'Yard':
+            distans = distask/91.44
+        if distto == 'Mile':
+            distans = distask/160934
+    if distfrom == 'Metres':
+        if distto == 'Millimetres':
+            distans = distask*1000
+        if distto == 'Centimetres':
+            distans = distask*100
+        if distto == 'Metres':
+            distans = distask
+        if distto == 'Kilometres':
+            distans = distask/1000
+        if distto == 'Inches':
+            distans = distask*39.37
+        if distto == 'Foot':
+            distans = distask*3.281
+        if distto == 'Yard':
+            distans = distask*1.094
+        if distto == 'Mile':
+            distans = distask/1609
+    if distfrom == 'Kilometres':
+        if distto == 'Millimetres':
+            distans = distask*1000000
+        if distto == 'Centimetres':
+            distans = distask*100000
+        if distto == 'Metres':
+            distans = distask*1000
+        if distto == 'Kilometres':
+            distans = distask
+        if distto == 'Inches':
+            distans = distask*39370
+        if distto == 'Foot':
+            distans = distask*3281
+        if distto == 'Yard':
+            distans = distask*1094
+        if distto == 'Mile':
+            distans = distask/1.609
+    if distfrom == 'Inch':
+        if distto == 'Millimetres':
+            distans = distask*25.4
+        if distto == 'Centimetres':
+            distans = distask*2.54
+        if distto == 'Metres':
+            distans = distask/39.37
+        if distto == 'Kilometres':
+            distans = distask/39370
+        if distto == 'Inches':
+            distans = distask
+        if distto == 'Foot':
+            distans = distask/12
+        if distto == 'Yard':
+            distans = distask/36
+        if distto == 'Mile':
+            distans = distask/63360
+    if distfrom == 'Foot':
+        if distto == 'Millimetres':
+            distans = distask*305
+        if distto == 'Centimetres':
+            distans = distask*30.48
+        if distto == 'Metres':
+            distans = distask/3.281
+        if distto == 'Kilometres':
+            distans = distask/3281
+        if distto == 'Inches':
+            distans = distask*12
+        if distto == 'Foot':
+            distans = distask
+        if distto == 'Yard':
+            distans = distask/3
+        if distto == 'Mile':
+            distans = distask/5280
+    if distfrom == 'Yard':
+        if distto == 'Millimetres':
+            distans = distask*914
+        if distto == 'Centimetres':
+            distans = distask*91.44
+        if distto == 'Metres':
+            distans = distask/1.094
+        if distto == 'Kilometres':
+            distans = distask/1094
+        if distto == 'Inches':
+            distans = distask*36
+        if distto == 'Foot':
+            distans = distask*3
+        if distto == 'Yard':
+            distans = distask
+        if distto == 'Mile':
+            distans = distask/1760
+    if distfrom == 'Miles':
+        if distto == 'Millimetres':
+            distans = distask*1609000
+        if distto == 'Centimetres':
+            distans = distask*160934
+        if distto == 'Metres':
+            distans = distask*1609
+        if distto == 'Kilometres':
+            distans = distask*1.609
+        if distto == 'Inches':
+            distans = distask*63360
+        if distto == 'Foot':
+            distans = distask*5280
+        if distto == 'Yard':
+            distans = distask/1760
+        if distto == 'Mile':
+            distans = distask
+    distans2 = ttk.Label(tab2, text = distans)
+    distans2.place(relx = 0.5, rely = 0.7, anchor = CENTER)    
 
 def compcalculate():
     print('ham')
@@ -107,6 +248,7 @@ def volcalculate():
 tabControl = ttk.Notebook(root)
 
 mainframe = Frame(tabControl)
+mainframe.configure(bg = '#040000')
 mainframe.pack(pady = 125, padx = 225)
 
 tab1 = ttk.Frame(tabControl)
@@ -114,7 +256,7 @@ tab2 = ttk.Frame(tabControl)
 tab3 = ttk.Frame(tabControl)
 tab4 = ttk.Frame(tabControl)
 tab5 = ttk.Frame(tabControl)
-tabControl.add(tab1, text='Weight')
+tabControl.add(tab1, text='Weight',)
 tabControl.add(tab2, text='Distance')
 tabControl.add(tab3, text='Denary, Binary and Hex')
 tabControl.add(tab4, text='Temperature')
@@ -151,7 +293,7 @@ weightbutton1.place(relx = 0.5, rely = 0.5, anchor = CENTER)
 ##################################################################
 
 
-distOPTIONS = ['Milimetres', 'Centimetres', 'Metres', 'Kilometres', 'Inches', 'Foot', 'Yard', 'Mile', 'Furlong', 'League']
+distOPTIONS = ['Millimetres', 'Centimetres', 'Metres', 'Kilometres', 'Inches', 'Foot', 'Yard', 'Mile']
 disttkvar = StringVar(tab2)
 dist2tkvar = StringVar(tab2)
 
@@ -235,7 +377,7 @@ tempbutton.place(relx = 0.5, rely = 0.5, anchor = CENTER)
 ##################################################################
 
 
-volOPTIONS = ['Mililitres', 'Litres', 'Centilitres', 'Decilitres', 'Pint', 'Quart', 'Gallon', 'Teaspoon', 'Tablespoon', 'Fluid ounce']
+volOPTIONS = ['Millilitres', 'Litres', 'Centilitres', 'Decilitres', 'Pint', 'Quart', 'Gallon', 'Teaspoon', 'Tablespoon', 'Fluid ounce']
 voltkvar = StringVar(tab5)
 vol2tkvar = StringVar(tab5)
 
