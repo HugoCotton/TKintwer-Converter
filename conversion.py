@@ -59,10 +59,37 @@ def weightcalculate():
         if weightto == 'Ounces':
             weightans = weightask
         if weightto == 'Pound':
-            weightans = weightask*2205
+            weightans = weightask/16
         if weightto == 'Stone':
-            weightans = weightask*157
-        
+            weightans = weightask/224
+    if weightfrom == 'Pounds':
+        if weightto == 'Grams':
+            weightans = weightask*454
+        if weightto == 'Kilograms':
+            weightans = weightask/2.205
+        if weightto == 'Tonnes':
+            weightans = weightask/2205
+        if weightto == 'Ounces':
+            weightans = weightask*16
+        if weightto == 'Pound':
+            weightans = weightask
+        if weightto == 'Stone':
+            weightans = weightask*14
+    if weightfrom == 'Stone':
+        if weightto == 'Grams':
+            weightans = weightask*6350
+        if weightto == 'Kilograms':
+            weightans = weightask/6.35
+        if weightto == 'Tonnes':
+            weightans = weightask/157
+        if weightto == 'Ounces':
+            weightans = weightask*224
+        if weightto == 'Pound':
+            weightans = weightask*14
+        if weightto == 'Stone':
+            weightans = weightask        
+    weightans2 = ttk.Label(tab1, text = weightans)
+    weightans2.place(relx = 0.5, rely = 0.7, anchor = CENTER)      
 
 
 def distcalculate():
@@ -119,7 +146,7 @@ weightentry1.place(relx = 0.5, rely = 0.4, anchor = CENTER)
 weightbutton1 = Button(tab1, text = 'Submit', justify = CENTER, command = weightcalculate)
 weightbutton1.place(relx = 0.5, rely = 0.5, anchor = CENTER)
 
-weightans = ttk.Label(tab1, text = weightans)
+
 
 ##################################################################
 
