@@ -4,8 +4,35 @@ from tkinter import *
 
 root = tkinter.Tk()
 root.title('Conversion')
-root.configure(bg = '#000000')
+root.config(bg = 'gray15')
 weightans = 'Please enter an answer'
+
+tabControl = ttk.Notebook(root)
+
+mainframe = Frame(tabControl)
+mainframe.configure(bg = '#040000')
+mainframe.pack(pady = 125, padx = 225)
+mainframe.place()
+
+s = ttk.Style(root)
+s.configure('TNotebook', background = 'gray20')
+s.configure('TLabel', background = 'gray20', foreground = 'white')
+s.configure('TFrame', background = 'gray20', foreground = 'white')
+s.configure('TMenubutton', background = 'gray20', foreground = 'white')
+s.configure('TEntry', background = 'gray20')
+
+tab1 = ttk.Frame(tabControl)
+tab2 = ttk.Frame(tabControl)
+tab3 = ttk.Frame(tabControl)
+tab4 = ttk.Frame(tabControl)
+tab5 = ttk.Frame(tabControl)
+tabControl.add(tab1, text='Weight')
+tabControl.add(tab2, text='Distance')
+tabControl.add(tab3, text='Denary, Binary and Hex')
+tabControl.add(tab4, text='Temperature')
+tabControl.add(tab5, text='Volume')
+tabControl.pack(expand=1, fill="both")
+
 
 def weightcalculate():
     weightask = float(weightentry1.get())
@@ -246,24 +273,6 @@ def tempcalculate():
 def volcalculate():
     print('ham')
 
-tabControl = ttk.Notebook(root)
-
-mainframe = Frame(tabControl)
-mainframe.configure(bg = '#040000')
-mainframe.pack(pady = 125, padx = 225)
-
-tab1 = ttk.Frame(tabControl)
-tab2 = ttk.Frame(tabControl)
-tab3 = ttk.Frame(tabControl)
-tab4 = ttk.Frame(tabControl)
-tab5 = ttk.Frame(tabControl)
-tabControl.add(tab1, text='Weight',)
-tabControl.add(tab2, text='Distance')
-tabControl.add(tab3, text='Denary, Binary and Hex')
-tabControl.add(tab4, text='Temperature')
-tabControl.add(tab5, text='Volume')
-tabControl.pack(expand=1, fill="both")
-
 ##################################################################
 
 weightOPTIONS = ['Grams', 'Kilograms', 'Tonnes', 'Ounces', 'Pounds', 'Stones']
@@ -271,7 +280,11 @@ weighttkvar = StringVar(tab1)
 weight2tkvar = StringVar(tab1)
 
 weightpopupMenu = OptionMenu(tab1, weighttkvar, *weightOPTIONS)
+weightpopupMenu.config(bg = 'gray20', fg = 'white')
+weightpopupMenu['menu'].config(bg = 'gray20', fg = 'white')
 weightpopupMenu2 = OptionMenu(tab1, weight2tkvar, *weightOPTIONS)
+weightpopupMenu2.config(bg = 'gray20', fg = 'white')
+weightpopupMenu2['menu'].config(bg = 'gray20', fg = 'white')
 
 weighttkvar.set('Please pick an option')
 weight2tkvar.set('Please pick an option')
@@ -287,7 +300,7 @@ weightentry1 = Entry(tab1, justify = CENTER )
 weightentry1.place(relx = 0.5, rely = 0.4, anchor = CENTER)
 
 weightbutton1 = Button(tab1, text = 'Submit', justify = CENTER, command = weightcalculate)
-weightbutton1.place(relx = 0.5, rely = 0.5, anchor = CENTER)
+weightbutton1.place(relx = 0.5, rely = 0.6, anchor = CENTER)
 
 
 
