@@ -335,7 +335,7 @@ distentry1.place(relx = 0.5, rely = 0.4, anchor = CENTER)
 
 
 distbutton1 = Button(tab2, text = 'Submit', justify = CENTER, command = distcalculate)
-distbutton1.place(relx = 0.5, rely = 0.5, anchor = CENTER)
+distbutton1.place(relx = 0.5, rely = 0.6, anchor = CENTER)
 
 
 ##################################################################
@@ -346,7 +346,11 @@ comptkvar = StringVar(tab3)
 comp2tkvar = StringVar(tab3)
 
 comppopupMenu = OptionMenu(tab3, comptkvar, *compOPTIONS)
+comppopupMenu.config(bg = 'gray20', fg = 'white')
+comppopupMenu['menu'].config(bg = 'gray20', fg = 'white')
 comppopupMenu2 = OptionMenu(tab3, comp2tkvar, *compOPTIONS)
+comppopupMenu2.config(bg = 'gray20', fg = 'white')
+comppopupMenu2['menu'].config(bg = 'gray20', fg = 'white', activebackground = 'gray20', activeforeground = 'white')
 
 comptkvar.set('Please pick an option')
 comp2tkvar.set('Please pick an option')
@@ -363,7 +367,7 @@ compentry1.place(relx = 0.5, rely = 0.4, anchor = CENTER)
 
 
 compbutton1 = Button(tab3, text = 'Submit', justify = CENTER, command = compcalculate)
-compbutton1.place(relx = 0.5, rely = 0.5, anchor = CENTER)
+compbutton1.place(relx = 0.5, rely = 0.6, anchor = CENTER)
 
 
 ##################################################################
@@ -374,7 +378,11 @@ temptkvar = StringVar(tab4)
 temp2tkvar = StringVar(tab4)
 
 temppopupmenu = OptionMenu(tab4, temptkvar, *tempOPTIONS)
+temppopupmenu.config(bg = 'gray20', fg = 'white')
+temppopupmenu['menu'].config(bg = 'gray20', fg = 'white')
 temppopupmenu2 = OptionMenu(tab4, temp2tkvar, *tempOPTIONS)
+temppopupmenu2.config(bg = 'gray20', fg = 'white')
+temppopupmenu2['menu'].config(bg = 'gray20', fg = 'white', activebackground = 'gray20', activeforeground = 'white')
 
 temptkvar.set('Please pick an option')
 temp2tkvar.set('Please pick an option')
@@ -391,7 +399,7 @@ tempentry.place(relx = 0.5, rely = 0.4, anchor = CENTER)
 
 
 tempbutton = Button(tab4, text = 'Submit', justify = CENTER, command = tempcalculate)
-tempbutton.place(relx = 0.5, rely = 0.5, anchor = CENTER)
+tempbutton.place(relx = 0.5, rely = 0.6, anchor = CENTER)
 
 
 ##################################################################
@@ -401,24 +409,28 @@ volOPTIONS = ['Millilitres', 'Litres', 'Centilitres', 'Decilitres', 'Pint', 'Qua
 voltkvar = StringVar(tab5)
 vol2tkvar = StringVar(tab5)
 
-volpopupmenu = OptionMenu(tab5, voltkvar, *volOPTIONS)
-volpopupmenu2 = OptionMenu(tab5, vol2tkvar, *volOPTIONS)
+volpopupMenu = OptionMenu(tab5, voltkvar, *volOPTIONS)
+volpopupMenu.config(bg = 'gray20', fg = 'white')
+volpopupMenu['menu'].config(bg = 'gray20', fg = 'white')
+volpopupMenu2 = OptionMenu(tab5, vol2tkvar, *volOPTIONS)
+volpopupMenu2.config(bg = 'gray20', fg = 'white')
+volpopupMenu2['menu'].config(bg = 'gray20', fg = 'white', activebackground = 'gray20', activeforeground = 'white')
 
 voltkvar.set('Please pick an option')
 vol2tkvar.set('Please pick an option')
 
-volpopupmenu.place(relx = 0.4, rely = 0.2, anchor = E)
+volpopupMenu.place(relx = 0.4, rely = 0.2, anchor = E)
 
 to = ttk.Label(tab5, text = 'to')
 to.place(relx = 0.5, rely = 0.2, anchor = CENTER)
 
-volpopupmenu2.place(relx = 0.6, rely = 0.2, anchor = W)
+volpopupMenu2.place(relx = 0.6, rely = 0.2, anchor = W)
 
 volentry = Entry(tab5, justify = CENTER )
 volentry.place(relx = 0.5, rely = 0.4, anchor = CENTER)
 
 volbutton = Button(tab5, text = 'Submit', justify = CENTER, command = volcalculate)
-volbutton.place(relx = 0.5, rely = 0.5, anchor = CENTER)
+volbutton.place(relx = 0.5, rely = 0.6, anchor = CENTER)
 
 
 ##################################################################
