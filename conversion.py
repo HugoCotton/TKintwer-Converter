@@ -35,89 +35,35 @@ tabControl.add(tab4, text='Temperature')
 tabControl.add(tab5, text='Volume')
 tabControl.pack(expand=1, fill="both")
 
+weightconversionfactors = [
+[  1,  0.001,  0.000001,  0.035274,  0.002205, 0.000157],
+[  1000,  1,  0.001,  35.274,  2.205,  0.157],
+[  1000000,  1000,  1,  35274,  2205,  157],
+[  28.35,  0.02835,  0.00002835,  1,  0.0625,  0.004464],
+[  454,  0.454,  0.000454,  16,  1,  0.07143],
+[  6350,  0.157,  6.369,  224,  14,  1]
+]
+weightOPTIONS = ['Grams', 'Kilograms', 'Tonnes', 'Ounces', 'Pounds', 'Stones']
+
+distconversionfactors = [
+[  1,  0.1,  0.001,  0.000001,  0.0394,  0.00328,  0.0010941,  0.0000006215],
+[  10,  1,  0.01, 0.00001, 0.394,  0.0328,  0.010941,  0.000006215],
+[  1000,  100,  1,  0.001,  39.37,  3.281,  1.094,  0.0006215],
+[  1000000,  100000,  1000,  1,  39370,  3281,  1094,  0.6215],
+[  25.4,  2.54,  0.0254,  0.0000254,  1,  0.0833,  0.02778,  0.000015783],
+[  305,  30.48,  0.3048,  0.0003048,  12,  1,  0.33333,  0.0001894],
+[  914,  91.44,  0.9141,  0.0009141,  36,  3,  1,  0.0005682],
+[  1609000,  160934,  1609,  1.609,  63360,  5280,  1760,  1],
+]
+distOPTIONS = ['Millimetres', 'Centimetres', 'Metres', 'Kilometres', 'Inches', 'Foot', 'Yard', 'Mile']
 
 def weightcalculate():
     weightask = float(weightentry1.get())
     weightfrom = weighttkvar.get()
     weightto = weight2tkvar.get()
-    if weightfrom == 'Grams':
-        if weightto == 'Grams':
-            weightans = weightask
-        if weightto == 'Kilograms':
-            weightans = weightask/1000
-        if weightto == 'Tonnes':
-            weightans = weightask/1000000
-        if weightto == 'Ounces':
-            weightans = weightask/28.35
-        if weightto == 'Pound':
-            weightans = weightask/454
-        if weightto == 'Stone':
-            weightans = weightask/6350
-    if weightfrom == 'Kilograms':
-        if weightto == 'Grams':
-            weightans = weightask*1000
-        if weightto == 'Kilograms':
-            weightans = weightask
-        if weightto == 'Tonnes':
-            weightans = weightask/1000
-        if weightto == 'Ounces':
-            weightans = weightask*35.274
-        if weightto == 'Pound':
-            weightans = weightask*2.205
-        if weightto == 'Stone':
-            weightans = weightask/6.35
-    if weightfrom == 'Tonnes':
-        if weightto == 'Grams':
-            weightans = weightask*1000000
-        if weightto == 'Kilograms':
-            weightans = weightask*1000
-        if weightto == 'Tonnes':
-            weightans = weightask
-        if weightto == 'Ounces':
-            weightans = weightask*35274
-        if weightto == 'Pound':
-            weightans = weightask*2205
-        if weightto == 'Stone':
-            weightans = weightask*157
-    if weightfrom == 'Ounces':
-        if weightto == 'Grams':
-            weightans = weightask*28.35
-        if weightto == 'Kilograms':
-            weightans = weightask/35.274
-        if weightto == 'Tonnes':
-            weightans = weightask/35274 
-        if weightto == 'Ounces':
-            weightans = weightask
-        if weightto == 'Pound':
-            weightans = weightask/16
-        if weightto == 'Stone':
-            weightans = weightask/224
-    if weightfrom == 'Pounds':
-        if weightto == 'Grams':
-            weightans = weightask*454
-        if weightto == 'Kilograms':
-            weightans = weightask/2.205
-        if weightto == 'Tonnes':
-            weightans = weightask/2205
-        if weightto == 'Ounces':
-            weightans = weightask*16
-        if weightto == 'Pound':
-            weightans = weightask
-        if weightto == 'Stone':
-            weightans = weightask*14
-    if weightfrom == 'Stone':
-        if weightto == 'Grams':
-            weightans = weightask*6350
-        if weightto == 'Kilograms':
-            weightans = weightask/6.35
-        if weightto == 'Tonnes':
-            weightans = weightask/157
-        if weightto == 'Ounces':
-            weightans = weightask*224
-        if weightto == 'Pound':
-            weightans = weightask*14
-        if weightto == 'Stone':
-            weightans = weightask        
+    weightfromindex = weightOPTIONS.index(weightfrom)
+    weighttoindex = weightOPTIONS.index(weightto)
+    weightans = weightask * weightconversionfactors[weightfromindex][weighttoindex]        
     weightans2 = ttk.Label(tab1, text = weightans)
     weightans2.place(relx = 0.5, rely = 0.7, anchor = CENTER)      
 
@@ -127,142 +73,9 @@ def distcalculate():
     distask = float(distentry1.get())
     distfrom = disttkvar.get()
     distto = dist2tkvar.get()
-    if distfrom == 'Millimetres':
-        if distto == 'Millimetres':
-            distans = distask
-        if distto == 'Centimetres':
-            distans = distask/10
-        if distto == 'Metres':
-            distans = distask/1000
-        if distto == 'Kilometres':
-            distans = distask/1000000
-        if distto == 'Inches':
-            distans = distask/25.4
-        if distto == 'Foot':
-            distans = distask/305
-        if distto == 'Yard':
-            distans = distask/914
-        if distto == 'Mile':
-            distans = distask/1609000  
-    if distfrom == 'Centimetres':
-        if distto == 'Millimetres':
-            distans = distask*10
-        if distto == 'Centimetres':
-            distans = distask
-        if distto == 'Metres':
-            distans = distask/100
-        if distto == 'Kilometres':
-            distans = distask/100000
-        if distto == 'Inches':
-            distans = distask/2.54
-        if distto == 'Foot':
-            distans = distask/30.48
-        if distto == 'Yard':
-            distans = distask/91.44
-        if distto == 'Mile':
-            distans = distask/160934
-    if distfrom == 'Metres':
-        if distto == 'Millimetres':
-            distans = distask*1000
-        if distto == 'Centimetres':
-            distans = distask*100
-        if distto == 'Metres':
-            distans = distask
-        if distto == 'Kilometres':
-            distans = distask/1000
-        if distto == 'Inches':
-            distans = distask*39.37
-        if distto == 'Foot':
-            distans = distask*3.281
-        if distto == 'Yard':
-            distans = distask*1.094
-        if distto == 'Mile':
-            distans = distask/1609
-    if distfrom == 'Kilometres':
-        if distto == 'Millimetres':
-            distans = distask*1000000
-        if distto == 'Centimetres':
-            distans = distask*100000
-        if distto == 'Metres':
-            distans = distask*1000
-        if distto == 'Kilometres':
-            distans = distask
-        if distto == 'Inches':
-            distans = distask*39370
-        if distto == 'Foot':
-            distans = distask*3281
-        if distto == 'Yard':
-            distans = distask*1094
-        if distto == 'Mile':
-            distans = distask/1.609
-    if distfrom == 'Inch':
-        if distto == 'Millimetres':
-            distans = distask*25.4
-        if distto == 'Centimetres':
-            distans = distask*2.54
-        if distto == 'Metres':
-            distans = distask/39.37
-        if distto == 'Kilometres':
-            distans = distask/39370
-        if distto == 'Inches':
-            distans = distask
-        if distto == 'Foot':
-            distans = distask/12
-        if distto == 'Yard':
-            distans = distask/36
-        if distto == 'Mile':
-            distans = distask/63360
-    if distfrom == 'Foot':
-        if distto == 'Millimetres':
-            distans = distask*305
-        if distto == 'Centimetres':
-            distans = distask*30.48
-        if distto == 'Metres':
-            distans = distask/3.281
-        if distto == 'Kilometres':
-            distans = distask/3281
-        if distto == 'Inches':
-            distans = distask*12
-        if distto == 'Foot':
-            distans = distask
-        if distto == 'Yard':
-            distans = distask/3
-        if distto == 'Mile':
-            distans = distask/5280
-    if distfrom == 'Yard':
-        if distto == 'Millimetres':
-            distans = distask*914
-        if distto == 'Centimetres':
-            distans = distask*91.44
-        if distto == 'Metres':
-            distans = distask/1.094
-        if distto == 'Kilometres':
-            distans = distask/1094
-        if distto == 'Inches':
-            distans = distask*36
-        if distto == 'Foot':
-            distans = distask*3
-        if distto == 'Yard':
-            distans = distask
-        if distto == 'Mile':
-            distans = distask/1760
-    if distfrom == 'Miles':
-        if distto == 'Millimetres':
-            distans = distask*1609000
-        if distto == 'Centimetres':
-            distans = distask*160934
-        if distto == 'Metres':
-            distans = distask*1609
-        if distto == 'Kilometres':
-            distans = distask*1.609
-        if distto == 'Inches':
-            distans = distask*63360
-        if distto == 'Foot':
-            distans = distask*5280
-        if distto == 'Yard':
-            distans = distask/1760
-        if distto == 'Mile':
-            distans = distask
+    distfromindex = distOPTIONS.index(distfrom)
+    disttoindex = distOPTIONS.index(distto)
+    distans = distask * distconversionfactors[distfromindex][disttoindex]    
     distans2 = ttk.Label(tab2, text = distans)
     distans2.place(relx = 0.5, rely = 0.7, anchor = CENTER)    
 
@@ -277,7 +90,6 @@ def volcalculate():
 
 ##################################################################
 
-weightOPTIONS = ['Grams', 'Kilograms', 'Tonnes', 'Ounces', 'Pounds', 'Stones']
 weighttkvar = StringVar(tab1)
 weight2tkvar = StringVar(tab1)
 
@@ -309,7 +121,6 @@ weightbutton1.place(relx = 0.5, rely = 0.6, anchor = CENTER)
 ##################################################################
 
 
-distOPTIONS = ['Millimetres', 'Centimetres', 'Metres', 'Kilometres', 'Inches', 'Foot', 'Yard', 'Mile']
 disttkvar = StringVar(tab2)
 dist2tkvar = StringVar(tab2)
 
@@ -432,10 +243,6 @@ volentry.place(relx = 0.5, rely = 0.4, anchor = CENTER)
 volbutton = Button(tab5, text = 'Submit', justify = CENTER, command = volcalculate)
 volbutton.place(relx = 0.5, rely = 0.6, anchor = CENTER)
 
-
 ##################################################################
-
-
-
 
 root.mainloop()
