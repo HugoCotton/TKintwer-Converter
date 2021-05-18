@@ -57,6 +57,10 @@ distconversionfactors = [
 ]
 distOPTIONS = ['Millimetres', 'Centimetres', 'Metres', 'Kilometres', 'Inches', 'Foot', 'Yard', 'Mile']
 
+compOPTIONS = ['Denary', 'Binary', 'Hex']
+
+tempOPTIONS = ['Celcius', 'Farenheit', 'Kelvin']
+
 def weightcalculate():
     weightask = float(weightentry1.get())
     weightfrom = weighttkvar.get()
@@ -80,10 +84,45 @@ def distcalculate():
     distans2.place(relx = 0.5, rely = 0.7, anchor = CENTER)    
 
 def compcalculate():
-    print('ham')
+    compask = float(compentry1.get())
+    compfrom = comptkvar.get()
+    compto = comp2tkvar.get()
+    if compfrom == 'Denary':
+        if compto == 'Denary':
+            compans = compask
+        if compto == 'Binary':
+            compans = bin(compask)
+        if compto == 'Hexadecimal':
+            compans = hex(compask)
+    if compfrom == 'Binary':
+        if compto == 'Denary':
+            compans = int(compask, 2)
+        if compto =='Binary':
+            compans = compans
+        if compto == 'Hexadecimal':
+            compans = hex(int(compask, 2))
+    if compfrom == 'Hexadecimal':
+        if compto == 'Denary':
+            compans = int(compask, 16)
+        if compto == 'Binary':
+            compans = bin(int(compask, 16))
+        if compto == 'Hexadecimal':
+            compans = compask
 
 def tempcalculate():
-    print('ham')
+    tempask = float(tempentry.get())
+    tempfrom = temptkvar.get()
+    tempto = temp2tkvar.get()
+    if tempfrom == 'Celcius':
+        if tempto == 'Celcius':
+            tempans = tempask
+        if tempto == 'Farenheit':
+            tempans = (tempask * 9/5) + 32
+        if tempto == 'Kelvin':
+            compans = tempask + 273.15
+    if tempfrom == 'Farenheit':
+        if tempto == 'Celcius':
+            compans = (tempask - 32) * 5/9
 
 def volcalculate():
     print('ham')
@@ -152,7 +191,6 @@ distbutton1.place(relx = 0.5, rely = 0.6, anchor = CENTER)
 ##################################################################
 
 
-compOPTIONS = ['Denary', 'Binary', 'Hex']
 comptkvar = StringVar(tab3)
 comp2tkvar = StringVar(tab3)
 
@@ -184,7 +222,6 @@ compbutton1.place(relx = 0.5, rely = 0.6, anchor = CENTER)
 ##################################################################
 
 
-tempOPTIONS = ['Celcius', 'Farenheit', 'Kelvin']
 temptkvar = StringVar(tab4)
 temp2tkvar = StringVar(tab4)
 
